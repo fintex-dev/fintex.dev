@@ -1,0 +1,131 @@
+
+Create VMs
+==========
+
+multipass launch -m 64Gb  --disk 128G --cpus 2 -n node0
+multipass launch -m 64Gb --disk 128G --cpus 2 -n node1
+multipass launch -m 64Gb --disk 128G --cpus 2 -n node2
+
+
+multipass list                            
+Name                    State             IPv4             Image
+node0                   Running           10.40.111.34     Ubuntu 20.04 LTS
+node1                   Running           10.40.111.223    Ubuntu 20.04 LTS
+node2                   Running           10.40.111.184    Ubuntu 20.04 LTS
+
+
+Node0
+=====
+multipass shell node0
+sudo snap install microk8s --classic
+microk8s status --wait-ready
+sudo usermod -a -G microk8s ubuntu
+sudo chown -f -R ubuntu ~/.kube
+exit
+multipass shell node0
+
+(https://ubuntu.com/tutorials/getting-started-with-kubernetes-ha?&_ga=2.215961879.1414970465.1622383977-181166393.1622383977#4-create-a-microk8s-multinode-cluster)
+microk8s add-node
+From the node you wish to join to this cluster, run the following:
+microk8s join 10.40.111.34:25000/THISISYOURID
+
+Node1
+=====
+multipass shell node1
+sudo snap install microk8s --classic
+microk8s status --wait-ready
+sudo usermod -a -G microk8s ubuntu
+sudo chown -f -R ubuntu ~/.kube
+exit
+multipass shell node1
+microk8s join 10.40.111.34:25000/THISISYOURID
+
+Node2
+=====
+multipass shell node2
+sudo snap install microk8s --classic
+microk8s status --wait-ready
+sudo usermod -a -G microk8s ubuntu
+sudo chown -f -R ubuntu ~/.kube
+exit
+multipass shell node2
+exit
+
+get new token:
+multipass shell node0
+exit
+
+
+microk8s join 10.40.111.34:25000/THISISYOURID
+exit
+
+
+Get kubeconfiguration
+=====================
+multipass shell node0
+microk8s kubectl (copy to clipboard)
+exit
+
+cd $HOME
+mkdir .kube
+cd .kube
+vi config  (insert from clipboard)
+
+Install kubectl
+===============
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+mv kubectl /usr/local/bin
+chmod +x  /usr/local/bin/kubectl
+
+Test
+====
+kubectl get pods --all-namespaces
+
+
+Enable Addons
+=============
+multipass shell node0
+microk8s status
+
+microk8s enable dashboard
+microk8s enable helm3
+microk8s enable traefik
+microk8s enable storage
+
+Make Dashboard Visisble
+=======================
+kubectl get services -n kube-system
+kubectl edit services kubernetes-dashboard -n kube-system
+
+change type: ClusterIP to type: NodePort
+(Test: telnet 10.40.111.34  32563)
+
+edit in /etc/haproxyhaproxy.cfg:
+frontend ft_web
+  bind *:8080 
+  default_backend dashboard
+
+
+backend dashboard
+  balance roundrobin
+  server server1  10.40.111.34:32563 cookie server1
+
+ systemctl restart haproxy
+
+Console Token
+==============
+kubectl create serviceaccount dashboard-admin-sa
+kubectl create clusterrolebinding dashboard-admin-sa --clusterrole=cluster-admin --serviceaccount=default:dashboard-admin-sa
+kubectl get secrets
+
+kubectl describe secret dashboard-admin-sa-token-vh86g (change )
+
+ Console at:  https://h1.fintex.dev:8080/#/login  (Firefox)
+
+
+
+
+
+
+
+

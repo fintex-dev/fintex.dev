@@ -1,0 +1,56 @@
+DNS Setup at Cloudflare
+=======================
+
+SET A or CNAME RECORDS
+
+create a wild card like:   *.app.fintex.dev
+
+Create an Api Token
+
+mkdir -p ~/.secrets/certbot
+vi ~/.secrets/certbot/cloudflare.ini
+dns_cloudflare_api_token = <thisisyourtoken>
+
+
+
+Install let's encrypt
+=====================
+https://certbot.eff.org/lets-encrypt/ubuntufocal-haproxy#wildcard
+
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo snap set certbot trust-plugin-with-root=ok
+sudo snap install certbot-dns-cloudflare
+
+
+Configure Nginx
+===============
+vi /etc/nginx/csites-enabled/h1.fintex.dev.conf
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+
+	# Add index.php to the list if you are using PHP
+	index index.html index.htm index.nginx-debian.html;
+
+    server_name h1.fintex.dev  *.app.fintex.dev;
+}
+
+nginx -t && nginx -s reload
+
+
+Get Certs
+=========
+certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini -d *.app.fintex.dev -d h1.fintex.dev 
+
+
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/app.fintex.dev/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/app.fintex.dev/privkey.pem
+   Your certificate will expire on 2021-08-29. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again. To non-interactively renew *all* of your
+   certificates, run "certbot renew"
