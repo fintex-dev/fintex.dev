@@ -1,0 +1,9 @@
+Test Geth
+
+https://messari.io/article/running-an-ethereum-node-on-kubernetes-is-easy
+
+
+kubectl port-forward statefulset/geth-mainnet-full 8545:8545
+
+
+reboot kubectl rollout restart statefulset geth-mainnet-full

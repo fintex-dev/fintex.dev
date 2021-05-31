@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: geth-mainnet-full
+spec:
+  serviceName: geth-mainnet-full
+  replicas: 1
+  selector:
+    matchLabels:
+      app: geth-mainnet-full
+  template:
+    metadata:
+      labels:
+        app: geth-mainnet-full
+    spec:
+      containers:
+        - name: geth-mainnet-full
+          image: ethereum/client-go:v1.10.3
+          args:
+            [
+              "-http",
+              "-http.addr=0.0.0.0",
+              "-http.vhosts=geth-mainnet-full",
+              "-http.api=eth,net,web3,txpool",
+              "-ws",
+              "-ws.addr=0.0.0.0",
+              "-datadir=/data",
+              "-metrics",
+              "-metrics.influxdb",
+              "-metrics.influxdb.database=geth",
+              "-metrics.influxdb.endpoint=http://10.40.111.34:32400",
+              "-metrics.influxdb.username=geth",
+              "-metrics.influxdb.password=paccus",
+            ]
+          env:
+          ports:
+            - containerPort: 8545
+              name: gethrpc
+            - containerPort: 30303
+              name: gethdiscovery
+          volumeMounts:
+            - name: data
+              mountPath: "/data"
+          resources:
+            limits:
+              memory: 12000Mi
+            requests:
+              memory: 10000Mi
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: microk8s-hostpath
+        resources:
+          requests:
+            storage: 350Gi

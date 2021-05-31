@@ -1,0 +1,14 @@
+Setup Grafana
+
+
+move influxdb service to NodePort
+
+Influx 10.40.111.34 32400
+user: geth
+pwd: paccus
+
+http://h1.fintex.dev:3000/login
+
+
+import dashboard https://grafana.com/grafana/dashboards/13877/
+
