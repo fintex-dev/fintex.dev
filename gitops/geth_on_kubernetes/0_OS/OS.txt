@@ -16,3 +16,14 @@ tmpfs           126G     0  126G   0% /sys/fs/cgroup
 /dev/md1        487M   83M  379M  18% /boot
 tmpfs            26G     0   26G   0% /run/user/0
 
+
+apt-get update
+apt-get -y install snapd
+snap install core; snap refresh core
+apt-get -y install git
+apt-get -y  install telnet
+apt-get -y  install haproxy
+
+snap install multipass
+snap restart multipass
+
