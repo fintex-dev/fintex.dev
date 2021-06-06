@@ -1,0 +1,13 @@
+// follow: https://www.consul.io/docs/k8s/installation/install
+
+
+cp /etc/rancher/k3s/k3s.yaml ~/.kube/conf
+
+sudo snap install —classic helm
+helm repo add hashicorp https://helm.releases.hashicorp.com
+helm install consul hashicorp/consul --set global.name=consul
+kubectl get pods
+
+
+
+
