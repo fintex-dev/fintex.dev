@@ -1,2 +1,2 @@
-sudo snap install helm3
+sudo snap install -classic helm
 
