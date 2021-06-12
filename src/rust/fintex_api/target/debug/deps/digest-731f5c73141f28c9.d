@@ -1,0 +1,13 @@
+/Users/mat/gitroot/fintex.dev/src/rust/fintex_api/target/debug/deps/digest-731f5c73141f28c9.rmeta: /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/lib.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/digest.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/dyn_digest.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/errors.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/fixed.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/variable.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/xof.rs
+
+/Users/mat/gitroot/fintex.dev/src/rust/fintex_api/target/debug/deps/libdigest-731f5c73141f28c9.rlib: /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/lib.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/digest.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/dyn_digest.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/errors.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/fixed.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/variable.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/xof.rs
+
+/Users/mat/gitroot/fintex.dev/src/rust/fintex_api/target/debug/deps/digest-731f5c73141f28c9.d: /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/lib.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/digest.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/dyn_digest.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/errors.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/fixed.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/variable.rs /Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/xof.rs
+
+/Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/lib.rs:
+/Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/digest.rs:
+/Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/dyn_digest.rs:
+/Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/errors.rs:
+/Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/fixed.rs:
+/Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/variable.rs:
+/Users/mat/.cargo/registry/src/github.com-1ecc6299db9ec823/digest-0.9.0/src/xof.rs:
