@@ -1,0 +1,12 @@
+---
+
+- name: check out a git repository
+  hosts: all
+  gather_facts: no
+  become: no
+
+  tasks:
+  - name: Checkout repo
+    ansible.builtin.git:
+      repo: https://github.com/fintex-dev/fintex.dev.git
+      dest: /home/mat/gitroot
