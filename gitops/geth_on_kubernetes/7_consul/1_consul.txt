@@ -1,0 +1,32 @@
+// follow: https://www.consul.io/docs/k8s/installation/install
+
+
+cp /etc/rancher/k3s/k3s.yaml ~/.kube/conf
+
+sudo snap install —classic helm
+
+git clone https://github.com/hashicorp/consul-helm
+cd consul-helm
+git checkout v0.8.1
+
+Edit helm configs
+
+helm install --namespace consul  consul  ./
+
+kubectl -n consul get secrets
+
+ACL Token:
+export CONSUL_HTTP_TOKEN=$(kubectl -n consul get secrets consul-consul-bootstrap-acl-token  --template={{.data.token}} | base64 -d)
+
+to enter:
+kubectl -n consul get pods
+kubectl -n consul exec <pod> -it /bin/sh
+
+
+
+
+
+
+
+
+
