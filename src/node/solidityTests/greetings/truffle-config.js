@@ -1,7 +1,12 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 
-secretsfile="/Users/mat/gitroot/secrets/metawallet.js"  // get the mnemonic variable from here
+
+// get the MetaMask seed
+
 require(secretsfile)();
+secretsfile="/Users/mat/gitroot/secrets/metawallet.js"  // get the mnemonic variable from here above git roots
+conf = require(secretsfile);
+mnemonic = conf.mnemonic
 
 module.exports = {
   networks: {
