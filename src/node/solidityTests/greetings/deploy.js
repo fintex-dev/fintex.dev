@@ -23,14 +23,14 @@ const deploy = async () => {
   
     console.log('attempting to deploy from account',accounts[0]);
 
-   // console.log(interface);
+    console.log(interface);
    // console.log(bytecode);
 
     //console.log(JSON.parse(interface));
     
-    let contract = new web3.eth.Contract(interface);
+   // let contract = new web3.eth.Contract(interface);
 
-    result = await contract.deploy({data: '0x' + bytecode, arguments: ['Hello World']}).send({gas: 2310334, from: accounts[0]});
+   // result = await contract.deploy({data: '0x' + bytecode, arguments: ['Hello World']}).send({gas: 2310334, from: accounts[0]});
     console.log('Contract deployed to', result.options.address); 
 
 };
