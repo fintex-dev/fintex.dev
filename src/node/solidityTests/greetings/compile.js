@@ -21,10 +21,13 @@ const input = {
   },
 };
 
-module.exports = solc.compile(JSON.stringify(input));
+//const tempFile = JSON.parse(solc.compile(JSON.stringify(input)));
+//const contractFile = tempFile.contracts['Greetings.sol']['MatsFirstContract'];
+//module.exports = contractFile;
+//console.log(contractFile)
 
-console.log(solc.compile(JSON.stringify(input)));
+
+const output = JSON.parse(solc.compile(JSON.stringify(input)));
+module.exports.output = output;
 
 
-//const wowLookAtThat = JSON.parse(solc.compile(JSON.stringify(input)));
-//module.exports = wowLookAtThat.contracts["Greetings.sol"][":Greetings"];

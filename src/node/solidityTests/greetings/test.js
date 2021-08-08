@@ -1,4 +1,11 @@
-secretsfile="/Users/mat/gitroot/secrets/metawallet.js"  // get the mnemonic variable from here
-conf = require(secretsfile);
-console.log(conf.mnemonic)
+const { interface,bytecode} = require('./compile');
+console.log(interface)
+
+//const result =JSON.parse(interface) 
+
+
+console.log(bytecode)
+
+//console.log(interface);
+// console.log(bytecode);
 
