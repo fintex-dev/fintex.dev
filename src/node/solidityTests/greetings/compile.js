@@ -21,5 +21,10 @@ const input = {
   },
 };
 
+//module.exports = solc.compile(source, 1).contracts[':Greetings'];
+
+console.log(solc.compile(JSON.stringify(input)));
+
+
 const wowLookAtThat = JSON.parse(solc.compile(JSON.stringify(input)));
-module.exports = wowLookAtThat.contracts["Greetings.sol"]["FirstContract"];
+module.exports = wowLookAtThat.contracts["Greetings.sol"][":Greetings"];
