@@ -1,0 +1,13 @@
+---
+
+- name: Install Stuff
+  gather_facts: true
+  hosts: all
+  become: yes
+  become_user: mat
+
+  roles:
+    - geerlingguy.ntp
+    - fubarhouse.rust
+
+

@@ -1,0 +1,7 @@
+export VAULT_ADDR=https://10.0.0.1:8200
+export VAULT_TOKEN=<ROOT TOKEN>
+export VAULT_SKIP_VERIFY=true
+
+
+vault login
+example: vault kv get  secret/some

@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/mat/gitroot/fintex.dev/src/csharp/consoleproject/consoleproject.csproj": {}
+  },
+  "projects": {
+    "/Users/mat/gitroot/fintex.dev/src/csharp/consoleproject/consoleproject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mat/gitroot/fintex.dev/src/csharp/consoleproject/consoleproject.csproj",
+        "projectName": "consoleproject",
+        "projectPath": "/Users/mat/gitroot/fintex.dev/src/csharp/consoleproject/consoleproject.csproj",
+        "packagesPath": "/Users/mat/.nuget/packages/",
+        "outputPath": "/Users/mat/gitroot/fintex.dev/src/csharp/consoleproject/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/mat/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "NetCore.HashiCorp.Vault": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
+            "Nethereum.Web3": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "VaultSharp": {
+              "target": "Package",
+              "version": "[1.6.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
