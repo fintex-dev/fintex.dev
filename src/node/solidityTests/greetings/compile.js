@@ -21,12 +21,6 @@ const input = {
   },
 };
 
-//const tempFile = JSON.parse(solc.compile(JSON.stringify(input)));
-//const contractFile = tempFile.contracts['Greetings.sol']['MatsFirstContract'];
-//module.exports = contractFile;
-//console.log(contractFile)
-
-
 const output = JSON.parse(solc.compile(JSON.stringify(input)));
 module.exports.output = output;
 

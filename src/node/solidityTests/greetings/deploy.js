@@ -5,38 +5,37 @@ const compiled_contract = require('./compile.js');
 const interface = compiled_contract.output.contracts['Greetings.sol']['MatsFirstContract'].abi;
 const bytecode = compiled_contract.output.contracts['Greetings.sol']['MatsFirstContract'].evm.bytecode.object;
 
-// Secret
-secretsfile="/Users/mat/gitroot/secrets/metawallet.js"  // get the mnemonic variable from here above git roots
-conf = require(secretsfile);
-mnemonic = conf.mnemonic
-infuraUrl = conf.infuraUrl
-console.log(infuraUrl)
-
-
-const provider = new HDWalletProvider(  
-  mnemonic, 
-  infuraUrl   
-);
-
-const web3 = new Web3(provider);
-
 const deploy = async () => {
-    accounts = await web3.eth.getAccounts(); 
-  
-    console.log('attempting to deploy from account',accounts[0]);
 
-    //console.log(interface);
-   // console.log(bytecode);
+  // Get Secrets from Vault
+  const vault = require("node-vault")({
+      apiVersion: "v1",
+      endpoint: "https://10.0.0.1:8200",
+  });
+  vault.token = process.env.VAULT_TOKEN;
+  data  = await vault.read("secret/metamask_mnemonic"); 
+  const mnemonic = data.data.value;
+  data = await vault.read("secret/infuraUrl"); 
+  const infuraUrl = data.data.value;
 
-    //console.log(JSON.parse(interface));
-    
-   // let contract = new web3.eth.Contract(interface);
 
-    result = await contract.deploy({data: '0x' + bytecode, arguments: ['Hello World']}).send({gas: 2310334, from: accounts[0]});
-    console.log('Contract deployed to', result.options.address); 
+  // Build provider
+  const provider = new HDWalletProvider(  
+      mnemonic, 
+      infuraUrl   
+  );
+  const web3 = new Web3(provider);
+
+  // get account
+  accounts = await web3.eth.getAccounts(); 
+  console.log('attempting to deploy from account',accounts[0]);
+
+// save contract
+ let contract = new web3.eth.Contract(interface);
+ result = await contract.deploy({data: '0x' + bytecode, arguments: ['Hello World']}).send({gas: 2310334, from: accounts[0]});
+ console.log('Contract deployed to', result.options.address); 
 
 };
-
 
 deploy();
 

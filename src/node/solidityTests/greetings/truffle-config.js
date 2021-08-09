@@ -6,12 +6,14 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 secretsfile="/Users/mat/gitroot/secrets/metawallet.js"  // get the mnemonic variable from here above git roots
 conf = require(secretsfile);
 mnemonic = conf.mnemonic
+infuraUrl = conf.infuraUrl
+console.log(infuraUrl)
 
 module.exports = {
   networks: {
     ropsten: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/83f9baf669d145d4844a13c58897bfec")
+        return new HDWalletProvider(mnemonic, infuraUrl)
       },
       network_id: 3
     }
